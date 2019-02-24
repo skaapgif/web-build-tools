@@ -87,9 +87,25 @@ export interface IExtractorPoliciesConfig {
  */
 export const enum ExtractorValidationRulePolicy {
   /**
-   * Violations of the rule will be reported as build errors.
+   * Violations of the rule will be reported as build errors.  The project
+   * will have been considered to be unbuildable.
    */
   error = 'error',
+
+  /**
+   * Violations of the rule will be reported as build warnings.  The project
+   * will build successfully, but a production CI build should still fail.
+   */
+  warn = 'warn',
+
+  /**
+   * Violations of the rule will be noted in the API review file, but otherwise the build
+   * is successful.
+   *
+   * If the API review file is disabled, then this will be treated as "warn".
+   */
+  review = 'review',
+
   /**
    * Violations of the rule are silently ignored.
    */
