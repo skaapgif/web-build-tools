@@ -786,7 +786,7 @@ interface IExtractorMessagesConfig {
 // @public
 interface IExtractorOptions {
     compilerProgram?: ts.Program;
-    customLogger?: Partial<ILogger>;
+    customLogger?: ILogger;
     localBuild?: boolean;
     // @beta
     typescriptCompilerFolder?: string;

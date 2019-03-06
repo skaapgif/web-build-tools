@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft/api-extractor",
+      "comment": "Change IExtractorOptions.customLogger from Partial<ILogger> to ILogger",
+      "type": "major"
+    }
+  ],
+  "packageName": "@microsoft/api-extractor",
+  "email": "skaapgif@users.noreply.github.com"
+}

@@ -60,7 +60,7 @@ export interface IExtractorOptions {
    * Allows the caller to handle API Extractor errors; otherwise, they will be logged
    * to the console.
    */
-  customLogger?: Partial<ILogger>;
+  customLogger?: ILogger;
 
   /**
    * Indicates that API Extractor is running as part of a local build, e.g. on developer's
@@ -242,13 +242,8 @@ export class Extractor {
   }
 
   public constructor(config: IExtractorConfig, options?: IExtractorOptions) {
-    let mergedLogger: ILogger;
-    if (options && options.customLogger) {
-      mergedLogger = lodash.merge(lodash.clone(Extractor._defaultLogger), options.customLogger);
-    } else {
-      mergedLogger = Extractor._defaultLogger;
-    }
-    this._monitoredLogger = new MonitoredLogger(mergedLogger);
+    const logger: ILogger = options && options.customLogger ? options.customLogger : Extractor._defaultLogger;
+    this._monitoredLogger = new MonitoredLogger(logger);
 
     this._actualConfig = Extractor._applyConfigDefaults(config);
 
